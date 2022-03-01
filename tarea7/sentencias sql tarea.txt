@@ -1,0 +1,20 @@
+create table Autor (AutorID integer, nombre varchar(15), apellido varchar(25), nacionalidad varchar(10), primary key (AutorID));
+
+create table Libro (LibroID integer, titulo varchar(50), f_publicacion varchar(10), AutorID integer, primary key (LibroID), FOREIGN KEY (AutorID) REFERENCES Autor(AutorID));
+
+
+INSERT INTO Autor (AutorID, nombre, apellido, nacionalidad) VALUES (0, 'J. R. R.', 'Tolkien','Inglaterra' );
+INSERT INTO Autor (AutorID, nombre, apellido, nacionalidad) VALUES (1, 'Isaac', 'Asimov','Rusia' );
+INSERT INTO Libro (LibroID, titulo, f_publicacion, AutorID) VALUES (0, 'El Hobbit', '21/09/1937',0 );
+INSERT INTO Libro (LibroID, titulo, f_publicacion, AutorID) VALUES (1, 'La Comunidad del Anillo', '29/07/1954',0 );
+INSERT INTO Libro (LibroID, titulo, f_publicacion, AutorID) VALUES (2, 'Las dos torres', '11/11/1954',0 );
+INSERT INTO Libro (LibroID, titulo, f_publicacion, AutorID) VALUES (3, 'El retorno del Rey', '20/10/1955',0 );
+INSERT INTO Libro (LibroID, titulo, f_publicacion, AutorID) VALUES (4, 'Un guijarro en el cielo', '19/01/1950',1 );
+INSERT INTO Libro (LibroID, titulo, f_publicacion, AutorID) VALUES (5, 'Fundación', '01/06/1951',1 );
+INSERT INTO Libro (LibroID, titulo, f_publicacion, AutorID) VALUES (6, 'Yo, robot', '02/12/1950',1 );
+
+delete from Libro where AutorID = 0;
+delete from Autor where AutorID= 0;
+
+select l.LibroId, l.titulo, l.f_publicacion, l.AutorId, a.AutorID, a.nombre, a.apellido, a.nacionalidad from Autor a join Libro l on (a.AutorID = l.AutorID);
+
